@@ -17,16 +17,18 @@ body {
 }
 
 .loader-wrapper {
-width: 100%;
-height: 100%;
-position: fixed;
-z-index: 1000;
-top: 0;
-left: 0;
-background-color: #000;
-display: flex;
-justify-content: center;
-align-items: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+    opacity: 1;
 }
 
 .loader {
@@ -265,6 +267,8 @@ section {
   /* Additional styling (optional) */
   width: 400px; /* Adjust the width and height as needed */
   height: 400px;
+  object-fit: cover; 
+  object-position: center; /* adjust as needed */
 }
 
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/MyProfile.css'; // Adjust the path if needed.
-import profileImage from '../assets/images/image1.jpg';
+import '../styles/mediaqueries.css'; // Adjust the path if needed.
+import profileImage from '../assets/images/profile.jpeg';
 import aboutImage from '../assets/images/image.png';
 import experienceIcon from '../assets/images/image.png';
 import educationIcon from '../assets/images/image.png';
@@ -10,11 +11,18 @@ import project1Img from '../assets/images/image.png';
 import project2Img from '../assets/images/image.png';
 import project3Img from '../assets/images/image.png';
 import emailIcon from '../assets/images/image.png';
+import catIcon from '../assets/images/cat.png';
 import catRiv from '../assets/cat.riv';
 import Rive from '@rive-app/react-canvas';
 
 const MyProfile = () => {
     const [loading, setLoading] = useState(true);
+    const [loaderHidden, setLoaderHidden] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+    
     const projects = [
         {
             image: project1Img,
@@ -30,18 +38,35 @@ const MyProfile = () => {
         }
     ];
 
+    const changeFavicon = (newFaviconSrc) => {
+        const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+        link.type = 'image/png';
+        link.rel = 'shortcut icon';
+        link.href = newFaviconSrc;
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+
     useEffect(() => {
+        document.title = "Dimas FN";
+        changeFavicon(catIcon);
         const timer = setTimeout(() => {
             setLoading(false);
-        }, 1000); // hide loader after 3 seconds
-
-        return () => clearTimeout(timer); // clear the timeout if the component is unmounted before the timeout finishes
+    
+            const transitionTimer = setTimeout(() => {
+                setLoaderHidden(true);
+            }, 500);  // this should match the transition duration in your CSS
+    
+            return () => clearTimeout(transitionTimer);
+        }, 1000);
+    
+        return () => clearTimeout(timer);
     }, []);
+    
 
     return (
         <div className="preload">
             {/* Loader */}
-            <div className="loader-wrapper" style={{ display: loading ? 'flex' : 'none' }}>
+            <div className="loader-wrapper" style={{ opacity: loading ? 1 : 0, display: loaderHidden ? 'none' : 'flex' }}>
                 <div className="loader">
                     <div className="loader-inner"></div>
                 </div>
@@ -52,7 +77,8 @@ const MyProfile = () => {
 
                     {/* Navigation Bar */}
                     <nav>
-                        <div className="logo">Your Logo</div>
+                        <div className="logo">Dimas FN</div>
+                        <div id="desktop-nav">
                         <ul className="nav-links">
                             <li><a href="#profile">Profile</a></li>
                             <li><a href="#about">About</a></li>
@@ -60,16 +86,19 @@ const MyProfile = () => {
                             <li><a href="#projects">Projects</a></li>
                             <li><a href="#contact">Contact</a></li>
                         </ul>
+                        </div>
                         <div className="hamburger-menu" id="hamburger-nav">
-                            <div className="hamburger-icon">
+                            <div className="hamburger-icon" onClick={toggleMenu}>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </div>
-                            <ul className="menu-links">
-                                <li><a href="#profile">Profile</a></li>
-                                <li><a href="#about">About</a></li>
-                                {/* You can add more links if needed */}
+                            <ul className={`menu-links ${menuOpen ? 'open' : ''}`}>
+                                <li><a href="#profile" onClick={toggleMenu}>Profile</a></li>
+                                <li><a href="#about" onClick={toggleMenu}>About</a></li>
+                                <li><a href="#experience" onClick={toggleMenu}>Experience</a></li>
+                                <li><a href="#projects" onClick={toggleMenu}>Projects</a></li>
+                                <li><a href="#contact" onClick={toggleMenu}>Contact</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -80,7 +109,7 @@ const MyProfile = () => {
                             <img src={profileImage} alt="Profile" />
                         </div>
                         <div className="section__text">
-                            <h1 className="title">Your Name</h1>
+                            <h1 className="title">Dimas Ferdinand Nathanael</h1>
                             <p className="section__text__p1">Your description 1</p>
                             <p className="section__text__p2">Your description 2</p>
                             <div id="socials-container">
@@ -106,7 +135,7 @@ const MyProfile = () => {
                                 <div className="details-container">
                                     <img src={experienceIcon} alt="Experience icon" className="icon" />
                                     <h3>Experience</h3>
-                                    <p>2+ years <br />Mobile Development</p>
+                                    <p>2+ years <br />Software Development</p>
                                 </div>
                                 <div className="details-container">
                                     <img src={educationIcon} alt="Education icon" className="icon" />
@@ -116,13 +145,14 @@ const MyProfile = () => {
                             </div>
                             <div className="text-container">
                                 <p>
-                                    Greetings, I am a Mobile Developer with 1-year experience in developing mobile applications using Kotlin,
+                                    {/* Greetings, I am a Mobile Developer with 1-year experience in developing mobile applications using Kotlin,
                                     Swift, and Flutter technologies. Throughout my career journey, I have successfully designed and implemented
                                     various mobile applications that prioritize excellent user experiences.
                                     My interest in mobile technology and programming started during my college years, and since then, I have
                                     honed my skills in mastering Kotlin and Swift programming languages for Android and iOS platforms.
                                     Additionally, I have delved into cross-platform app development using Flutter, allowing me to build
-                                    consistent applications across various devices.
+                                    consistent applications across various devices. */}
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique pellentesque arcu, eu bibendum libero posuere quis. Sed gravida est volutpat, dignissim eros sed, tempor ex. Vestibulum pretium quam vitae blandit ullamcorper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse tortor erat, venenatis ac justo in, scelerisque semper sem. Aenean tortor risus, pulvinar non neque ac, ullamcorper dictum enim. Aenean ultrices, justo et lacinia fringilla, ante mauris placerat nibh, quis ultricies tellus libero sit amet tellus. Aliquam maximus nibh eu est egestas, quis venenatis elit vestibulum. Cras sit amet urna ut magna vulputate pellentesque. Donec bibendum ipsum vel fermentum pharetra. Aliquam sollicitudin risus ut magna aliquet consectetur. Quisque pellentesque justo id consectetur pellentesque. Nullam scelerisque eget mauris id finibus. Morbi rhoncus quam id erat tristique, et facilisis erat aliquam.
                                 </p>
                             </div>
                         </div>
@@ -201,10 +231,10 @@ const MyProfile = () => {
                         <div className="contact-info-upper-container">
                             <div className="contact-info-container">
                                 <img src={emailIcon} alt="Email icon" className="icon contact-icon email-icon" />
-                                <p><a href="mailto:mbagusrizky15@gmail.com">mbagusrizky15@gmail.com</a></p>
+                                <p><a href="mailto:dimas.ferdinand@outlook.com">dimas.ferdinand@outlook.com</a></p>
                             </div>
                         </div>
-                        <Rive src={catRiv} />
+                        <Rive id="canvas" src={catRiv} />
                     </section>
 
                     {/* Footer */}
@@ -219,7 +249,7 @@ const MyProfile = () => {
                             </ul>
                         </div>
                         </nav>
-                        <p>Copyright © 2023 Bagus Rizky. All Rights Reserved.</p>
+                        <p>Copyright © 2023 Dimas Ferdinand Nathanael. All Rights Reserved.</p>
                     </footer>
                 </>
             )}
