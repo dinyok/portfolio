@@ -177,7 +177,7 @@ const MyProfile = () => {
                                 <div className="details-container">
                                     <img src={educationIcon} alt="Education icon" className="icon" />
                                     <h3>Education</h3>
-                                    <p>B.Sc. Bachelors Degree</p>
+                                    <p>Bachelor of Computer Science</p>
                                 </div>
                             </div>
                             <div className="text-container">
