@@ -5,14 +5,14 @@ import profileImage from '../assets/images/profile.jpeg';
 import githubImg from '../assets/images/github.png';
 import linkedinImg from '../assets/images/linkedin.png';
 import aboutImage from '../assets/images/image.png';
-import experienceIcon from '../assets/images/image.png';
-import educationIcon from '../assets/images/image.png';
-import arrowIcon from '../assets/images/image.png';
-import checkmarkIcon from '../assets/images/image.png';
+import experienceIcon from '../assets/images/experience.png';
+import educationIcon from '../assets/images/education.png';
+import arrowIcon from '../assets/images/arrow.png';
+import checkmarkIcon from '../assets/images/checkmark.png';
 import project1Img from '../assets/images/image.png';
 import project2Img from '../assets/images/image.png';
 import project3Img from '../assets/images/image.png';
-import emailIcon from '../assets/images/image.png';
+import emailIcon from '../assets/images/email.png';
 import catIcon from '../assets/images/cat.png';
 import catRiv from '../assets/cat.riv';
 import Rive from '@rive-app/react-canvas';
@@ -24,19 +24,33 @@ const MyProfile = () => {
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
+
+    const reloadPage = () => {
+        window.location.reload();
+    };
+
+    const openInNewTab = (url) => {
+        window.open(url, '_blank');
+    };
     
     const projects = [
         {
             image: project1Img,
-            title: 'Project One'
+            title: 'Project One',
+            github: 'https://github.com/dinyok/portfolio',
+            demo: 'https://dinyok.github.io/portfolio/'
         },
         {
             image: project2Img,
-            title: 'Project Two'
+            title: 'Project Two',
+            github: 'https://github.com/dinyok/projectSkripsi',
+            demo: 'https://project-skripsi-123cc171c159.herokuapp.com'
         },
         {
             image: project3Img,
-            title: 'Project Three'
+            title: 'Project Three',
+            github: 'https://github.com/dinyok/Kasir',
+            demo: 'https://dinyok.github.io/portfolio/'
         }
     ];
 
@@ -79,7 +93,7 @@ const MyProfile = () => {
 
                     {/* Navigation Bar */}
                     <nav>
-                        <div className="logo">Dimas FN</div>
+                        <div className="logo"><a href="" onClick={reloadPage}>Dimas FN</a></div>
                         <div id="desktop-nav">
                         <ul className="nav-links">
                             <li><a href="#profile">Profile</a></li>
@@ -114,18 +128,34 @@ const MyProfile = () => {
                             <p class="section__text__p1">Hello, I'm</p>
                             <h1 className="title">Dimas Ferdinand Nathanael</h1>
                             <p className="section__text__p2">Software Developer</p>
-                            <div class="btn-container">
-                                <button class="btn btn-color-2" onclick="window.open('https://docs.google.com/document/d/10DaiS9Q91qTNpJG9ncvrNbt0grMaaH0YwqIYtR1nanY/edit?usp=share_link')">
-                                    Download CV
-                                </button>
-                                <button class="btn btn-color-1" onclick="location.href='./#contact'">
-                                    Contact Info
-                                </button>
-                            </div>
-                            <div id="socials-container">
-                                    <img src={linkedinImg} alt="My LinkedIn profile" class="icon" onclick="window.open('https://www.linkedin.com/in/dimas-ferdinand-nathanael/')"/>
-                                    <img src={githubImg} alt="My Github profile" class="icon" onclick="window.open('https://github.com/dinyok')"/>
-                            </div>
+                            <div className="btn-container">
+                <button 
+                    className="btn btn-color-2" 
+                    onClick={() => openInNewTab('https://drive.google.com/file/d/1Z3cneqecU0ZCNKrZr--FdQkZwFIGFf73/view?usp=share_link')}
+                >
+                    Download CV
+                </button>
+                <button 
+                    className="btn btn-color-1" 
+                    onClick={() => window.location.href='./#contact'}
+                >
+                    Contact Info
+                </button>
+            </div>
+            <div id="socials-container">
+                <img 
+                    src={linkedinImg} 
+                    alt="My LinkedIn profile" 
+                    className="icon" 
+                    onClick={() => openInNewTab('https://www.linkedin.com/in/dimas-ferdinand-nathanael/')}
+                />
+                <img 
+                    src={githubImg} 
+                    alt="My Github profile" 
+                    className="icon" 
+                    onClick={() => openInNewTab('https://github.com/dinyok')}
+                />
+            </div>
                         </div>
                     </section>
 
@@ -152,14 +182,13 @@ const MyProfile = () => {
                             </div>
                             <div className="text-container">
                                 <p>
-                                    {/* Greetings, I am a Mobile Developer with 1-year experience in developing mobile applications using Kotlin,
-                                    Swift, and Flutter technologies. Throughout my career journey, I have successfully designed and implemented
-                                    various mobile applications that prioritize excellent user experiences.
-                                    My interest in mobile technology and programming started during my college years, and since then, I have
-                                    honed my skills in mastering Kotlin and Swift programming languages for Android and iOS platforms.
+                                    Greetings, I am a Software Developer with 2-year experience in developing applications using .Net Framework,
+                                    Laravel, and Flutter technologies. Throughout my career journey, I have successfully designed and implemented
+                                    various applications that prioritize excellent user satisfactions.
+                                    My interest in programming started during my high school years, and since then, I have
+                                    honed my skills in mastering programming languages for Software Developing.
                                     Additionally, I have delved into cross-platform app development using Flutter, allowing me to build
-                                    consistent applications across various devices. */}
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique pellentesque arcu, eu bibendum libero posuere quis. Sed gravida est volutpat, dignissim eros sed, tempor ex. Vestibulum pretium quam vitae blandit ullamcorper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse tortor erat, venenatis ac justo in, scelerisque semper sem. Aenean tortor risus, pulvinar non neque ac, ullamcorper dictum enim. Aenean ultrices, justo et lacinia fringilla, ante mauris placerat nibh, quis ultricies tellus libero sit amet tellus. Aliquam maximus nibh eu est egestas, quis venenatis elit vestibulum. Cras sit amet urna ut magna vulputate pellentesque. Donec bibendum ipsum vel fermentum pharetra. Aliquam sollicitudin risus ut magna aliquet consectetur. Quisque pellentesque justo id consectetur pellentesque. Nullam scelerisque eget mauris id finibus. Morbi rhoncus quam id erat tristique, et facilisis erat aliquam.
+                                    consistent applications across various devices.
                                 </p>
                             </div>
                         </div>
@@ -176,7 +205,7 @@ const MyProfile = () => {
                                 <div className="details-container">
                                     <h2 className="experience-sub-title">Languages</h2>
                                     <div className="article-container">
-                                        {[ 'Kotlin', 'Swift', 'Flutter', 'JavaScript' ].map(lang => (
+                                        {[ '.Net', 'C#', 'Flutter', 'PHP' ].map(lang => (
                                             <article key={lang}>
                                                 <img src={checkmarkIcon} alt="Experience icon" className="icon" />
                                                 <div>
@@ -189,7 +218,7 @@ const MyProfile = () => {
                                 <div className="details-container">
                                     <h2 className="experience-sub-title">Databases</h2>
                                     <div className="article-container">
-                                        {[ 'Firebase', 'SQL', 'Realm', 'MongoDB' ].map(db => (
+                                        {[ 'SQL', 'Firebase', 'MySQL', 'PostgreSQL' ].map(db => (
                                             <article key={db}>
                                                 <img src={checkmarkIcon} alt="Experience icon" className="icon" />
                                                 <div>
@@ -217,10 +246,10 @@ const MyProfile = () => {
                                         </div>
                                         <h2 className="experience-sub-title project-title">{project.title}</h2>
                                         <div className="btn-container">
-                                            <button className="btn btn-color-2 project-btn" onClick={() => window.location.href = '#'}>
+                                            <button className="btn btn-color-2 project-btn" onClick={() => openInNewTab(project.github)}>
                                                 Github
                                             </button>
-                                            <button className="btn btn-color-2 project-btn" onClick={() => window.location.href = '#'}>
+                                            <button className="btn btn-color-2 project-btn" onClick={() => openInNewTab(project.demo)}>
                                                 Live Demo
                                             </button>
                                         </div>
