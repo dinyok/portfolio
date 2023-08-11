@@ -50,7 +50,7 @@ const MyProfile = () => {
             image: project3Img,
             title: 'Project Three',
             github: 'https://github.com/dinyok/Kasir',
-            demo: 'https://dinyok.github.io/portfolio/'
+            demo: 'https://drive.google.com/file/d/1zkIA1TUwMcD8twaUB_Ocdhbt_uUPdYsc/view?usp=share_link'
         }
     ];
 
