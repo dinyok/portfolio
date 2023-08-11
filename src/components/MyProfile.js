@@ -113,8 +113,7 @@ const MyProfile = () => {
                         <div className="section__text">
                             <p class="section__text__p1">Hello, I'm</p>
                             <h1 className="title">Dimas Ferdinand Nathanael</h1>
-                            <p className="section__text__p1">Software Developer</p>
-                            <p className="section__text__p2">Your description 2</p>
+                            <p className="section__text__p2">Software Developer</p>
                             <div class="btn-container">
                                 <button class="btn btn-color-2" onclick="window.open('https://docs.google.com/document/d/10DaiS9Q91qTNpJG9ncvrNbt0grMaaH0YwqIYtR1nanY/edit?usp=share_link')">
                                     Download CV
