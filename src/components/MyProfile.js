@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../styles/MyProfile.css'; // Adjust the path if needed.
 import '../styles/mediaqueries.css'; // Adjust the path if needed.
 import profileImage from '../assets/images/profile.jpeg';
+import githubImg from '../assets/images/github.png';
+import linkedinImg from '../assets/images/linkedin.png';
 import aboutImage from '../assets/images/image.png';
 import experienceIcon from '../assets/images/image.png';
 import educationIcon from '../assets/images/image.png';
@@ -109,15 +111,21 @@ const MyProfile = () => {
                             <img src={profileImage} alt="Profile" />
                         </div>
                         <div className="section__text">
+                            <p class="section__text__p1">Hello, I'm</p>
                             <h1 className="title">Dimas Ferdinand Nathanael</h1>
-                            <p className="section__text__p1">Your description 1</p>
+                            <p className="section__text__p1">Software Developer</p>
                             <p className="section__text__p2">Your description 2</p>
-                            <div id="socials-container">
-                                {/* Add your social media icons here */}
+                            <div class="btn-container">
+                                <button class="btn btn-color-2" onclick="window.open('https://docs.google.com/document/d/10DaiS9Q91qTNpJG9ncvrNbt0grMaaH0YwqIYtR1nanY/edit?usp=share_link')">
+                                    Download CV
+                                </button>
+                                <button class="btn btn-color-1" onclick="location.href='./#contact'">
+                                    Contact Info
+                                </button>
                             </div>
-                            <div className="btn-container">
-                                <button className="btn btn-color-1">Button 1</button>
-                                <button className="btn btn-color-2">Button 2</button>
+                            <div id="socials-container">
+                                    <img src={linkedinImg} alt="My LinkedIn profile" class="icon" onclick="window.open('https://www.linkedin.com/in/dimas-ferdinand-nathanael/')"/>
+                                    <img src={githubImg} alt="My Github profile" class="icon" onclick="window.open('https://github.com/dinyok')"/>
                             </div>
                         </div>
                     </section>
